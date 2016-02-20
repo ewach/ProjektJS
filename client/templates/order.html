@@ -1,0 +1,47 @@
+
+<div ng-controller="OrderCtrl">
+    <div class = "screen">
+    <div class = "row">
+        <div  class="col-sm-6">
+            <div class = 'orderSummary'>
+            <h2>Twoje zamówienie</h2>
+            <div class = "basketCont">
+                <basket order = "order" totalsum = "totalsum" ></basket>
+            </div>
+            </div>
+        </div>
+        <div  class="col-sm-6">
+            <div id = 'contactData'>
+                <h2> Wprowadź dane kontaktowe </h2>
+                <div id = 'phoneNumber'>
+                    <div>Numer kontaktowy : </div>
+                    <input id = 'phoneNumberInput' ng-model="number" required= 'true'/>
+                </div>
+                <div id = 'streetName'>
+                    <div>Adres : </div>
+                    <input id = 'streetNameInput' required="adress" ng-model="adress"/>
+                </div>
+                <div id = 'remarks'>
+                    <div>Inne uwagi :</div>
+                    <input id = 'remarksInput' ng-model="remarks"/>
+                </div>
+            </div>
+            {{information}}
+            <button ng-click = "sendData()" >Zatwierdź</button>
+            <!-- <button ng-click = "sendData" ui-sref="status">Zatwierdź</button> -->
+            <button ui-sref="main">Cofnij</button>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- ###Finalize order
+* Delivery form (phone number, street name, remarks)
+* Form should be validated (phone number and street name are required, remarks are optional)
+* Screen shows basket summary in read-only form
+* Screen contains 'Back' button which will change actual screen to previous.
+* Screen contains 'Order' button which will:
+ * sends the POST request to the server,
+ * will show error message if request fails,
+ * will go to 'Order Status' view with order id from successful request,
+ * be disabled if form is not valid.
+ -->

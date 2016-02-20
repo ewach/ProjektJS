@@ -1,0 +1,127 @@
+html, body {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    background-color: #F6BEA9;
+    color: #4D0000;
+
+}
+
+body {
+    margin: 0;
+}
+
+.header{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4D0000;
+    text-align: center;
+    float: center;
+}
+
+
+.logo {
+    width: 150px;
+    height: 100px;
+}
+
+.logo, .branding, .menu {
+    display: inline;
+    text-align: center;
+    float: center;
+}
+
+
+.branding{
+    color: #F6BEA9;
+    font-size: 50px;
+    font-family:Antiqua;
+    display: inline;
+    text-align: center;
+}
+
+
+.menulist {
+    list-style-type: none;
+    margin-left: 50 px;
+}
+
+
+.menuitem a {
+    float: left;
+    color: #F6BEA9;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: medium;
+    display: inline;
+}
+
+.menuitem a:hover {
+    background-color: #4D0404;
+}
+
+
+.offert{
+    background-color: #4D0000;    
+    max-width: 350px;
+    /*display: inline-block;*/
+
+}
+
+.offertitem:hover {
+    background-color: #ffffff;
+}
+.offertitem {
+    display: block;
+    background-color: #F6BEA9;
+    border: 1px solid #d4d4d4;
+    list-style-type: none;
+    padding: 2px;
+    max-width: 250px;
+    cursor: pointer;
+}
+.itemprice, .itemaddbutton {
+    float: right;
+    min-width: 20%;
+}
+.itemaddbutton, .itemname, .itemprice {
+    display: inline;
+}
+.screen {
+    margin-left: 100px;
+}
+.basket{
+    /*max-width: 50%;*/
+    display: inline-block;
+    width: 60%;
+}
+
+.increaseButton, .decreaseButton {
+    /*font-family: Verdana,sans-serif;*/
+    cursor:pointer;
+}
+.decreaseButton {
+    color: red;
+}
+.increaseButton {
+    color: green;
+}
+.tablesum {
+    font-weight: bold;
+}
+
+.acceptOrderButton {
+    float: right;
+}
+
+.contactData {
+    text-align: center;
+    font-size: 20px;
+    padding: 100px;
+}
+
+#top, #sidebar, #bottom, .offertitem {
+    border-radius: 4px;
+    margin: 4px;
+}

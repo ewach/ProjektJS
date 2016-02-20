@@ -1,0 +1,45 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Pizza</title>
+        <meta name="author" content="Ewa Chojnacka"/>
+        <meta charset="utf-8">
+<!-- inject:css -->        
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+
+<!-- endinject -->
+    </head>
+    <body ng-app="myapp">
+
+        <div class = "header">
+            <img class = "logo" src="static/pizza.png" alt="Mountain View">
+            <div class = "branding">
+                Pizzeria Italiana
+            </div>
+            <div class = 'menu'>
+                <ul class="menulist">
+                    <li class='menuitem'> <a ui-sref="main">Zamów pizzę</a></li>
+                    <li class='menuitem'> <a ui-sref="status">Sprawdź status</a></li>
+                    <li class='menuitem'><a ui-sref="contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+        <div ui-view></div>
+<!-- inject:js -->
+        <script src="lib/angular.js"></script>
+        <script src="lib/angular-ui-router.min.js"></script>
+        <script src="scripts/app.js"></script>
+       <script src="scripts/directives/basket.js"></script>
+        <script src="scripts/controllers/mainCtrl.js"></script>
+        <script src="scripts/controllers/contactCtrl.js"></script>
+        <script src="scripts/controllers/orderCtrl.js"></script>
+        <script src="scripts/controllers/statusCtrl.js"></script>
+        <script src="scripts/services/service.js"></script>
+        <script src="scripts/services/order.js"></script>
+<!-- endinject -->
+
+
+    </body>
+</html>

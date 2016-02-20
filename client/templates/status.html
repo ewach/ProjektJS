@@ -1,0 +1,25 @@
+
+<div ng-controller="StatusCtrl">
+    <div class = "screen">
+    <div>
+        <div id = 'phoneNumber'>
+            <h3>Wprowadź id zamówienia : </h3>
+            <input id = 'orderIdInput' ng-model="checkOrderId" required= 'true'/>
+            <button ng-click = "getStatus(checkOrderId)" >Sprawdź</button>
+        </div>
+
+    </div>
+    <div id = 'status' hidden = "{{hidestatus}}">   
+        <h2> Status Zamówienia numer : {{orderId}} </h2>
+        <basket order = "order" totalsum = "totalsum"  ></basket>
+        <h3>
+            Przewidziany czas zrealizowania zamówienia za {{estimatedTime.h}} godzin {{estimatedTime.m}} minut i {{estimatedTime.s}} sekund</h3>
+    </div>
+    </div>
+
+</div>
+<!-- 
+###Status
+* Gets the status info from the server.
+* Shows estimate of order (how many minutes till the order arrives).
+ -->

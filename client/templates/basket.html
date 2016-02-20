@@ -1,0 +1,37 @@
+<!-- 
+        <div class = "basket">
+            <div id = "pizzas" ng-repeat = "pizza in order">
+                <div class = "basketelement" >
+                    <div class = 'pizzaname'>{{pizza.name}}</div>
+                    <div class = 'pizzaquantity'>{{pizza.quantity}}</div>
+                    <div class = 'pizzaprice'>{{pizza.price}}</div>
+                    <div class = 'pizzatotal'>{{pizza.quantity * pizza.price}}</div>
+                </div>
+            </div>
+            <div class = 'totalsum'> {{totalsum}}</div>
+        </div>
+ -->
+<!-- <div id = "basket"> -->
+        <div class = "basket">
+            <table class = "table">
+                <tr>
+                    <th> Nazwa </th>
+                    <th> Ilość </th>
+                    <th>Cena</th>
+                    <th>Razem</th>
+                </tr>
+                <tr class = "basketelement"  id = "pizzas" ng-repeat = "pizza in order">
+                    <td class = 'pizzaname'>{{pizza.name}}</td>
+                    <td class = 'pizzaquantity'>{{pizza.quantity}}</td>
+                    <td class = 'pizzaprice'>{{pizza.price}}</td>
+                    <td class = 'pizzatotal'>{{(pizza.quantity * pizza.price | number:2)*1}}</td>
+                </tr>
+                <tr class ="tablesum">
+                    <td>Suma</td>
+                    <td></td><td></td>
+                    <td class = 'totalsum'> {{totalsum}}</td>
+                </tr>
+            </table>
+
+        </div>
+<!-- </div> -->

@@ -1,0 +1,88 @@
+
+<div ng-controller="MainCtrl">
+<div class="row">
+    <div class="col-sm-4 offert">
+    <!-- <div class="offert"> -->
+        <!-- {{menu}} -->
+            <ul id = "offertList" class = 'offert' ng-repeat = "pizza in menu.data">
+            <li class = 'offertitem'  ng-click = "hide($event)" >
+                <!-- <span>{{pizza.id}}</span> -->
+                <div  class ="itemaddbutton" ng-click= "addPizza(pizza)">
+                    Dodaj
+                    <!-- <button > Add </button> -->
+                </div>
+                <div class = 'itemprice'>{{pizza.price}}</div>
+                <div class = 'itemname'>{{pizza.name}}</div>
+                <div class = "itemingredients" hidden = 'true'>
+                    <div ng-repeat = "ingredient in pizza.ingredients">
+                        <div> {{ingredient}} </div>
+                    </div>
+                </div>
+                
+            </li>
+            </ul>
+         
+    </div>
+
+    <div class="basketCont">
+    <div class = "basket">
+
+    <!-- <div class = "basket"> -->
+        <table class = "table">
+            <tr>
+                <th> Nazwa </th>
+                <th> Ilość </th>
+                <th>Cena</th>
+                <th>Razem</th>
+            </tr>
+            <tr class = "basketelement"  id = "pizzas" ng-repeat = "pizza in order">
+                <td class = 'pizzaname'>{{pizza.name}}</td>
+                <td class = 'pizzaquantity'>
+                    <span class = 'decreaseButton' ng-click = "decreaseNumber(pizza)"> – </span>
+                    {{pizza.quantity}}
+                    <span class = 'increaseButton' ng-click = "increaseNumber(pizza)"> + </span>
+                </td>
+                <td class = 'pizzaprice'>{{pizza.price}}</td>
+                <td class = 'pizzatotal'>{{(pizza.quantity * pizza.price | number:2)*1}}</td>
+            </tr>
+            <tr class ="tablesum">
+                <td>Suma</td>
+                <td></td><td></td>
+                <td class = 'totalsum'> {{totalPrice}}</td>
+            </tr>
+        </table>
+<!--             <div id = "pizzas" ng-repeat = "pizza in order">
+            <div class = "basketelement" >
+                <div class = 'pizzaname'>{{pizza.name}}</div>
+                <div class = 'pizzaquantity'>
+                        <span>{{pizza.quantity}}</span>
+                        <button ng-click = "increaseNumber(pizza)">+</button>
+                        <button ng-click = "decreaseNumber(pizza)">-</button>
+                </div>
+                <div class = 'pizzaprice'>{{pizza.price}}</div>
+                <div class = 'pizzatotal'>{{pizza.quantity * pizza.price}}</div>
+            </div>
+        </div>
+        <div class = 'totalsum'> {{totalPrice}}</div> -->
+        <button class = "acceptOrderButton" type="button" ng-click="saveOrder()"> Zatwierdź
+        </button>  
+    </div>
+    </div>
+</div>
+</div>
+
+
+
+<!-- ###Main screen
+######Basket
+* Each entry consists of pizza name, count and price per.
+* Summary contains total price.
+* User can remove an entry or edit entry count.
+* Contains 'Continue' button which will move user to 'Finalize order' screen.
+ * Refreshing page should clear the basket.
+
+######Menu
+* Gets the list from the server.
+* Each entry consists of pizza name, ingredients and price.
+* User can add any number pizzas (in any quantity) to the order or instantly order one selected pizza by click of a button.
+ -->
