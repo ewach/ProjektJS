@@ -37,9 +37,10 @@
         return me.convertMS(timeRest);
     }
 
-    var normalizeOrder = function(order) {
+    var normalizeOrder = function(data) {
+      console.log(data)
+      var order = data.order;
       for (i in order) {
-        order[i].pizza.quantity = order[i].quantity;
         order[i] = order[i].pizza;
       }
       return order;
@@ -49,6 +50,7 @@
       orderData.checkStatus(id)
           .then(function(status, err) {
               me.orderStatus = status;
+              $scope.status = status;
               $scope.orderId = id;
               $scope.order = normalizeOrder(status.data.order);
               $scope.estimatedTime = me.countTimeLeft(status.data.estimated);

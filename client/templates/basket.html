@@ -20,7 +20,7 @@
                     <th>Cena</th>
                     <th>Razem</th>
                 </tr>
-                <tr class = "basketelement"  id = "pizzas" ng-repeat = "pizza in order">
+                <tr class = "basketelement"  id = "pizzas" ng-repeat = "pizza in order track by $index">
                     <td class = 'pizzaname'>{{pizza.name}}</td>
                     <td class = 'pizzaquantity'>{{pizza.quantity}}</td>
                     <td class = 'pizzaprice'>{{pizza.price}}</td>

@@ -8,10 +8,8 @@ app
         this.order = data;
     }
     this.clearData = function() {
-           this.order = {
+        this.order = {
             'order' : [],
-            'totalPrice' : 0,
-            'clientData' : ''
         };
         this.orderStatus = 0;
         this.orderId = '';     
@@ -25,8 +23,11 @@ app
         return this.order;
     }
 
-    this.sendOrder = function(data) {
-        return $http.post('http://127.0.0.1:8080/order', data);
+    this.sendOrder = function() {
+        console.log('send order:')
+        me.order['extras'] = [];
+        console.log(me.order)
+        return $http.post('http://127.0.0.1:8080/order', me.order);
     };
     this.clearData()
   });

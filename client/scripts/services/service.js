@@ -18,4 +18,7 @@ app
         return $http.get('http://127.0.0.1:8080/menu')
     };
 
+    this.getIngredientsList = function () {
+        return $http.get('http://127.0.0.1:8080/ingredients');
+    }
   });

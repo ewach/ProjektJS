@@ -3,12 +3,9 @@
 
     $scope.totalsum = orderData.order.totalPrice;
     $scope.order = orderData.order.order;
-    $scope.number = undefined;
-    $scope.adress = undefined;
-    $scope.remarks = undefined;
     $scope.information = '';
     this.saveContactData = function() {
-        orderData.order.clientData = {
+        orderData.order.orderInfo = {
             'number' : $scope.number,
             'adress' : $scope.adress,
             'remarks' : $scope.remarks
@@ -47,7 +44,8 @@
  // * sends the POST request to the server,
  // * will show error message if request fails,
  // * will go to 'Order Status' view with order id from successful request,
-            orderData.sendOrder($scope.order)
+            me.saveContactData()
+            orderData.sendOrder()
                 .then(function(res, err) {
                     // console.log(res)
                     orderData.clearData();
@@ -55,7 +53,8 @@
 
                 })
                 .catch(function(err) {
-                    console.log('Blad' + err);
+                    console.log('error')
+                    console.log(err);
                 });
 
         }
