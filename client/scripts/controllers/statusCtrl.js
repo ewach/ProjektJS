@@ -1,4 +1,4 @@
-  app.controller('StatusCtrl', function ($scope, orderData, $stateParams) {
+  app.controller('StatusCtrl', function ($scope, orderData, $stateParams, dataService) {
 
     me = this;
     this.orderStatus = '';
@@ -6,6 +6,8 @@
     $scope.totalsum = 0;
     $scope.estimatedTime = '';
     $scope.orderDate = '';
+    $scope.menu ={};
+    $scope.ingredients ={};
 
     this.convertMS = function(ms) {
       var d, h, m, s;
@@ -38,10 +40,16 @@
     }
 
     var normalizeOrder = function(data) {
-      console.log(data)
+      // console.log(data)
       var order = data.order;
       for (i in order) {
-        order[i] = order[i].pizza;
+        var pizza = $scope.menu[order[i].pizza.id]
+        pizza.quantity = order[i].quantity
+        pizza.extraIngredients = order[i].pizza.extraIngredients
+        for(ing in pizza.extraIngredients) {
+          pizza.price += $scope.ingredients[pizza.extraIngredients[ing]].price
+        }
+        order[i] = pizza;
       }
       return order;
     }
@@ -64,9 +72,31 @@
           });
 
     }
+
     $scope.load = function() {
-      if($stateParams.orderId !== undefined)
-        $scope.getStatus($stateParams.orderId);
+      dataService.getIngredientsList()
+            .then(function(data, err) {
+                var ingr = data.data
+                var ingrDict = {}
+                for (var i in ingr) {
+                    ingrDict[ingr[i].id] = ingr[i];
+                }
+                $scope.ingredients = ingrDict
+            })
+            .then(dataService.getMenu()
+            .then(function(data, err) {
+                var menu = data.data
+                var menuDict = {}
+                for (var i in menu) {
+                    menuDict[menu[i].id] = menu[i];
+                }
+                $scope.menu = menuDict
+                if($stateParams.orderId !== undefined)
+                  $scope.getStatus($stateParams.orderId);
+            })
+            );
+        
+
     }
     $scope.load()
   });

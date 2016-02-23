@@ -1,9 +1,7 @@
-  app.controller('OrderCtrl', function ($scope, orderData, $state) {
+  app.controller('OrderCtrl', function ($scope, orderData, $state, dataService) {
     var me = this;
 
-    $scope.totalsum = orderData.order.totalPrice;
-    $scope.order = orderData.order.order;
-    $scope.information = '';
+
     this.saveContactData = function() {
         orderData.order.orderInfo = {
             'number' : $scope.number,
@@ -59,4 +57,23 @@
 
         }
     };
+
+    var getIngredientsList = function() {
+        dataService.getIngredientsList()
+            .then(function(data, err) {
+                var ingr = data.data
+                var ingrDict = {}
+                for (var i in ingr) {
+                    ingrDict[ingr[i].id] = ingr[i];
+                }
+                $scope.ingredients = ingrDict
+            }); 
+    };
+    this.load = function() {
+        getIngredientsList();
+        $scope.totalsum = orderData.order.totalPrice;
+        $scope.order = orderData.order.order;
+        $scope.information = '';
+    }
+    this.load();
   });

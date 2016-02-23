@@ -1,11 +1,9 @@
   app.controller('MainCtrl', function ($scope, $state, $http, dataService, orderData) {
-    $scope.ingedients = {}
-    $scope.variable = 'zmienna';
+    $scope.ingredients = {}
     $scope.menu = [];
     $scope.menuByIng = {}
     $scope.order = [];
     $scope.totalPrice = 0;
-    orderData.zmienna = 'hej';
 
 
     var round = function(n, k) {
@@ -74,13 +72,43 @@
         }
         return false;
     }
+
+    $scope.addIngredient = function(pizza, added) {
+        var index = pizza.removedIngredients.indexOf(parseInt(added));
+        if (index > -1) {
+            pizza.removedIngredients.splice(index, 1);
+            pizza.ingredients.push(parseInt(added));
+        } 
+        else {
+            pizza.extraIngredients.push(parseInt(added));
+            pizza.price += $scope.ingredients[added].price;
+            $scope.totalPrice = countTotalSum($scope.order);
+        }
+    }
+    $scope.removeIngredient = function(pizza, ing) {
+        var index = pizza.extraIngredients.indexOf(ing);
+        if (index > -1) {
+            pizza.extraIngredients.splice(index, 1);
+            pizza.price -= $scope.ingredients[ing].price;
+            $scope.totalPrice = countTotalSum($scope.order);
+        }
+        else{
+            index = pizza.ingredients.indexOf(ing);
+            if (index > -1) {
+                pizza.ingredients.splice(index, 1);
+                pizza.removedIngredients.push(parseInt(ing));
+            } 
+        }
+    }
+
     $scope.addPizza = function(pizza) {
 
             var newPizza = {
                 quantity:1,
-                extraIngredients:[]
+                extraIngredients:[],
+                removedIngredients:[]
             }
-            Object.assign(newPizza, pizza)
+            Object.assign(newPizza, pizza);
             $scope.order.push(newPizza);
             $scope.totalPrice = countTotalSum($scope.order);
             console.log($scope.order);

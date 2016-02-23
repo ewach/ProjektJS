@@ -2,7 +2,6 @@
 <div ng-controller="StatusCtrl">
     <div class = "screen">
     <div>
-    {{status}}
         <div id = 'phoneNumber'>
             <h3>Wprowadź id zamówienia : </h3>
             <input id = 'orderIdInput' ng-model="checkOrderId" required= 'true'/>
@@ -12,7 +11,7 @@
     </div>
     <div id = 'status' hidden = "{{hidestatus}}">   
         <h2> Status Zamówienia numer : {{orderId}} </h2>
-        <basket order = "order" totalsum = "totalsum"  ></basket>
+        <basket order = "order" totalsum = "totalsum"  ingredients = "ingredients"></basket>
         <h3>
             Przewidziany czas zrealizowania zamówienia za {{estimatedTime.h}} godzin {{estimatedTime.m}} minut i {{estimatedTime.s}} sekund</h3>
     </div>

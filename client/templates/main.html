@@ -30,7 +30,6 @@
 
     <div class="basketCont">
     <div class = "basket">
-
     <!-- <div class = "basket"> -->
         <table class = "table">
             <tr>
@@ -41,14 +40,31 @@
             </tr>
             <tr class = "basketelement"  id = "pizzas" ng-repeat = "pizza in order track by $index">
                 <td class = 'pizzaname'>
-                    {{pizza.name}}
+                    <div class = "block">
+                        <div class ="basketPizzaName"> {{pizza.name}} </div>
+                    </div>
+                   |<div class = "basketIngredients" ng-repeat = "ingredient in pizza.ingredients track by $index">
+                        <div class = "basketIngredient" > {{ingredients[ingredient].label}} <span class ="removeIngredient" ng-click = "removeIngredient(pizza, ingredient)">x</span> | </div>
+                    </div>
+                    <div class = "basketIngredients" ng-repeat = "ingredient in pizza.extraIngredients track by $index">
+                        <div class = "basketIngredient" > {{ingredients[ingredient].label}} <span class ="removeIngredient" ng-click = "removeIngredient(pizza, ingredient)">x</span> | </div>
+                    </div>
+                    <select class="basketSelectIngredient" ng-change = "addIngredient(pizza,addedIngredient)" ng-model="addedIngredient">
+                    <option  class="option" ng-repeat="ingredient in pizza.removedIngredients" value="{{ingredient}}">
+                          <div>{{ingredients[ingredient].label}}</div>
+                    </option>
+                      <option  class="option" ng-repeat="ingredient in ingredients" value="{{ingredient.id}}">
+                          <div class = "ingredientPrice">{{ingredient.price}}</div>
+                          <div>{{ingredient.label}}</div>
+                      </option>
+                    </select>
                 </td>
                 <td class = 'pizzaquantity'>
                     <span class = 'decreaseButton' ng-click = "decreaseNumber(pizza)"> – </span>
                     {{pizza.quantity}}
                     <span class = 'increaseButton' ng-click = "increaseNumber(pizza)"> + </span>
                 </td>
-                <td class = 'pizzaprice'>{{pizza.price}}</td>
+                <td class = 'pizzaprice'>{{(pizza.price | number:2)*1}}</td>
                 <td class = 'pizzatotal'>{{(pizza.quantity * pizza.price | number:2)*1}}</td>
             </tr>
             <tr class ="tablesum">
@@ -57,6 +73,33 @@
                 <td class = 'totalsum'> {{totalPrice}}</td>
             </tr>
         </table>
+
+
+<!--         <div class = "table">
+            <div class = "tablerow">
+                <div class = "tablecell tableheader"> Nazwa </div>
+                <div class = "tablecell tableheader"> Ilość </div>
+                <div class = "tablecell tableheader">Cena</div>
+                <div class = "tablecell tableheader">Razem</div>
+            </div>
+            <div class = "tablerow basketelement"  id = "pizzas" ng-repeat = "pizza in order track by $index">
+                <div class= "tablecell pizzaname">
+                    {{pizza.name}}
+                </div>
+                <div class= "tablecell pizzaquantity">
+                    <span class = 'decreaseButton' ng-click = "decreaseNumber(pizza)"> – </span>
+                    {{pizza.quantity}}
+                    <span class = 'increaseButton' ng-click = "increaseNumber(pizza)"> + </span>
+                </div>
+                <div class= "tablecell pizzaprice">{{pizza.price}}</div>
+                <div class= "tablecell pizzatotal">{{(pizza.quantity * pizza.price | number:2)*1}}</div>
+            </div>
+            <div class = "tablerow tablesum">
+                <div class= "tablecell">Suma</div>
+                <div class= "tablecell"></div><div class= "tablecell"></div>
+                <div class= "tablecell totalsum"> {{totalPrice}}</div>
+            </div>
+        </div> -->
 <!--             <div id = "pizzas" ng-repeat = "pizza in order">
             <div class = "basketelement" >
                 <div class = 'pizzaname'>{{pizza.name}}</div>

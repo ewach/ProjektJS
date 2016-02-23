@@ -21,9 +21,19 @@
                     <th>Razem</th>
                 </tr>
                 <tr class = "basketelement"  id = "pizzas" ng-repeat = "pizza in order track by $index">
-                    <td class = 'pizzaname'>{{pizza.name}}</td>
+                <td class = 'pizzaname'>
+                    <div class = "block">
+                        <div class ="basketPizzaName"> {{pizza.name}} </div>
+                    </div>
+                   |<div class = "basketIngredients" ng-repeat = "ingredient in pizza.ingredients track by $index">
+                        <div class = "basketIngredient" > {{ingredients[ingredient].label}} | </div>
+                    </div>
+                    <div class = "basketIngredients" ng-repeat = "ingredient in pizza.extraIngredients track by $index">
+                        <div class = "basketIngredient" > {{ingredients[ingredient].label}} | </div>
+                    </div>
+                </td>
                     <td class = 'pizzaquantity'>{{pizza.quantity}}</td>
-                    <td class = 'pizzaprice'>{{pizza.price}}</td>
+                    <td class = 'pizzaprice'>{{(pizza.price| number:2)*1}}</td>
                     <td class = 'pizzatotal'>{{(pizza.quantity * pizza.price | number:2)*1}}</td>
                 </tr>
                 <tr class ="tablesum">

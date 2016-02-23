@@ -103,11 +103,11 @@ body {
     width: 60%;
 }
 
-.increaseButton, .decreaseButton {
+.increaseButton, .decreaseButton, .removeIngredient {
     /*font-family: Verdana,sans-serif;*/
     cursor:pointer;
 }
-.decreaseButton {
+.decreaseButton, .removeIngredient{
     color: red;
 }
 .increaseButton {
@@ -117,10 +117,28 @@ body {
     font-weight: bold;
 }
 
-.acceptOrderButton {
-    float: right;
+.block div{
+    display:inline;
 }
 
+.basketIngredient, .basketIngredients, .basketSelectIngredient{
+    display: inline;
+    font-size: 90%;
+}
+.basketSelectIngredient{
+    width: 20px;
+    background-color: #FFF0F0;
+
+}
+.editBasketIngredients{
+    cursor:pointer;  
+}
+.acceptOrderButton,{
+    float: right;
+}
+.ingredientPrice{
+color: red;
+ }
 .contactData {
     text-align: center;
     font-size: 20px;

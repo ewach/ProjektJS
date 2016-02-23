@@ -5,7 +5,8 @@ app.directive('basket', function() {
     transclude: true,
     scope: {
         order : '=',
-        totalsum: '='
+        totalsum: '=',
+        ingredients: '='
     },
     controller: function($scope){
         // console.log($scope)
